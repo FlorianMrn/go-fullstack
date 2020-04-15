@@ -4,8 +4,26 @@ const express = require('express');
 // App
 const app = express();
 
-app.use((req, res) => {
-    res.json({ message : 'Hello'})
-})
+    // Middlewares
+    app.use((req, res, next) => {
+        console.log('Requête reçue');
+        next();
+    })
+
+    app.use((req, res, next) => {
+        res.status(201);
+        next();
+    })
+
+    app.use((req, res, next) => {
+        res.json({ message : 'Hello'});
+        next();
+    })
+
+    app.use((req, res, next) => {
+        console.log("All is okay");
+        next();
+    })
+
 // Export
 module.exports = app;
