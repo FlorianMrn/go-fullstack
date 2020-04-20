@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 // Routes import
 const stuffRoutes = require('./routes/stuff');
+const userRoutes = require('./routes/user');
 
 // App
 const app = express();
@@ -28,7 +29,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use('/api/stuff', stuffRoutes);
-
+app.use('/api/auth', userRoutes);
 
 // Export
 module.exports = app;
